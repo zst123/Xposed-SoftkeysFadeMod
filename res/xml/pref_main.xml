@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/app_name" >
+
+    <PreferenceCategory android:title="@string/config_category" >
+        <CheckBoxPreference
+            android:key="config_enabled"
+            android:title="@string/config_enabled_title" />
+
+        <com.zst.xposed.softkeysfademod.preference.WidgetNumberPicker
+            defaultValue="2000"
+            maximum="600000"
+            minimum="500"
+            android:dependency="config_enabled"
+            android:key="config_delay"
+            android:summary="@string/config_delay_summary"
+            android:title="@string/config_delay_title" />
+        
+        <com.zst.xposed.softkeysfademod.preference.WidgetNumberPicker
+            defaultValue="1000"
+            maximum="30000"
+            minimum="0"
+            android:dependency="config_enabled"
+            android:key="config_speed"
+            android:summary="@string/config_speed_summary"
+            android:title="@string/config_speed_title" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/module_category" >
+        <Preference
+            android:key="config_enabled"
+            android:summary="@string/module_about_summary"
+            android:title="@string/module_about_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

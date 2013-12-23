@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SoftkeysFadeMod</string>
+    <string name="app_description">Fades the softkeys to black after not touching it for some time (zst123)</string>
+    
+    <!-- Configurations -->
+    <string name="config_category">Settings</string>
+    <string name="config_enabled_title">Enable Fading</string>
+    <string name="config_enabled_dialog_message">Toggling fading requires SystemUI to be restarted.\n\nRestart SystemUI?</string>
+    <string name="config_enabled_dialog_cancel_enabled">Fading will be enabled the next time SystemUI restarts</string>
+    <string name="config_enabled_dialog_cancel_disabled">Fading will be disabled the next time SystemUI restarts</string>
+    <string name="config_delay_title">Fade Delay</string>
+    <string name="config_delay_summary">The time in milliseconds to wait after releasing a softkey before fading</string>
+    <string name="config_speed_title">Fade Speed</string>
+    <string name="config_speed_summary">The time taken in milliseconds to fade out</string>
+    
+    <!-- Module -->
+    <string name="module_category">Module</string>
+    <string name="module_about_title">About Module</string>
+    <string name="module_about_summary">• Created by zst123\n• Inspired by Softkeys Fade Mod in Cataclysm Rom</string>
+
+</resources>
