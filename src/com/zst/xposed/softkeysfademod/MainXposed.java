@@ -35,13 +35,15 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 	public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {
 		if (!lpparam.packageName.equals("com.android.systemui")) return;
 		
-		final Class<?> classKeyButtonView = findClass(
-				"com.android.systemui.statusbar.policy.KeyButtonView", lpparam.classLoader);
 		final Class<?> classSystemUIService = findClass("com.android.systemui.SystemUIService",
 				lpparam.classLoader);
-		
-		hookKeyButtonView(classKeyButtonView);
 		hookSystemUIRestartBroadcast(classSystemUIService);
+		
+		if (isEnabled()) {
+			final Class<?> classKeyButtonView = findClass(
+					"com.android.systemui.statusbar.policy.KeyButtonView", lpparam.classLoader);
+			hookKeyButtonView(classKeyButtonView);
+		}
 	}
 	
 	private void hookSystemUIRestartBroadcast(final Class<?> classSystemUIService) {
@@ -141,6 +143,11 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 	}
 	
 	/* Helper Methods */
+	private boolean isEnabled() {
+		mPref.reload();
+		return mPref.getBoolean(Common.KEY_ENABLED, false);
+	}
+	
 	private int getSpeed() {
 		mPref.reload();
 		return mPref.getInt(Common.KEY_FADE_SPEED, Common.DEFAULT_FADE_SPEED);
