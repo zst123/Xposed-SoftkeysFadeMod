@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -86,6 +87,11 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				final Runnable runnable = new Runnable() {
 					@Override
 					public void run() {
+						if (thizz.getVisibility() != View.VISIBLE) {
+							// keys that are hidden should not animate
+							return;
+						}
+						
 						fade_out.setDuration(getSpeed());
 						fade_out.setAnimationListener(new AnimationListener() {
 							@Override
