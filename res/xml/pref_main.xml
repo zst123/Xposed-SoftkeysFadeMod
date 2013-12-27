@@ -10,7 +10,7 @@
         <com.zst.xposed.softkeysfademod.preference.WidgetNumberPicker
             defaultValue="2000"
             maximum="600000"
-            minimum="500"
+            minimum="0"
             android:dependency="config_enabled"
             android:key="config_delay"
             android:summary="@string/config_delay_summary"
