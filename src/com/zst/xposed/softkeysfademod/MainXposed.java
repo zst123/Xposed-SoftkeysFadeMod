@@ -137,6 +137,7 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				final ImageView thizz = (ImageView) param.thisObject;
 				final MotionEvent event = (MotionEvent) param.args[0];
 				switch (event.getAction()) {
+				case MotionEvent.ACTION_CANCEL:
 				case MotionEvent.ACTION_UP:
 					thizz.getContext().sendBroadcast(new Intent(Common.BROADCAST_FADE));
 					break;
