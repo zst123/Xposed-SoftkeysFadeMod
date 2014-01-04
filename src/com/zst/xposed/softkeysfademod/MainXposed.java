@@ -89,6 +89,8 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 					public void run() {
 						if (thizz.getVisibility() != View.VISIBLE) {
 							// keys that are hidden should not animate
+							thizz.setAlpha(0f);
+							// set alpha immediately
 							return;
 						}
 						
