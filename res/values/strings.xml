@@ -17,6 +17,8 @@
     <string name="config_speed_summary">The time taken in milliseconds to fade out</string>
     <string name="config_min_alpha_title">Fade Alpha</string>
     <string name="config_min_alpha_summary">The minimum transparency for the softkeys to fade to</string>
+    <string name="config_others_dialog_message">This requires SystemUI to be restarted.\n\nRestart SystemUI?</string>
+    <string name="config_others_dialog_cancel">This will take effect the next time SystemUI restarts</string>
     
     <!-- Module -->
     <string name="module_category">Module</string>

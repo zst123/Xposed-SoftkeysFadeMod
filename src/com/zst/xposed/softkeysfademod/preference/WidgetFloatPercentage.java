@@ -98,6 +98,10 @@ public class WidgetFloatPercentage extends DialogPreference implements
 			Editor editor = getEditor();
 			editor.putFloat(getKey(), (realValue * 0.01f));
 			editor.commit();
+			if (getOnPreferenceChangeListener() != null) {
+				getOnPreferenceChangeListener().onPreferenceChange(this,
+						(realValue * 0.01f));
+			}
 		}
 		updatePercentage();
 	}

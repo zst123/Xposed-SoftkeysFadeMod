@@ -19,6 +19,7 @@ public class MainSettings extends PreferenceActivity implements OnPreferenceChan
 		getPreferenceManager().setSharedPreferencesMode(MODE_WORLD_READABLE);
 		addPreferencesFromResource(R.xml.pref_main);
 		findPreference(Common.KEY_ENABLED).setOnPreferenceChangeListener(this);
+		findPreference(Common.KEY_FADE_ALPHA).setOnPreferenceChangeListener(this);
 	}
 	
 	@Override
@@ -43,6 +44,23 @@ public class MainSettings extends PreferenceActivity implements OnPreferenceChan
 			});
 			builder.create().show();
 			return true;
+		} else if (Common.KEY_FADE_ALPHA.equals(preference.getKey())) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+			builder.setMessage(R.string.config_others_dialog_message);
+			builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					restartSystemUI();
+				}
+			});
+			builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					final String msg = getResources().getString(R.string.config_others_dialog_cancel);
+					Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+				}
+			});
+			builder.create().show();
+			return true;
+				
 		}
 		return false;
 	}
