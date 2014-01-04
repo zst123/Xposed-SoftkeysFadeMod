@@ -97,21 +97,8 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 						}
 						
 						fade_out.setDuration(getSpeed());
-						fade_out.setAnimationListener(new AnimationListener() {
-							@Override
-							public void onAnimationRepeat(Animation a) {
-							}
-							
-							@Override
-							public void onAnimationStart(Animation a) {
-							}
-							
-							@Override
-							public void onAnimationEnd(Animation animation) {
-								thizz.setAlpha(mMinAlpha);
-							}
-						});
 						fade_out.reset();
+						fade_out.setFillAfter(true);
 						thizz.startAnimation(fade_out);
 					}
 				};
