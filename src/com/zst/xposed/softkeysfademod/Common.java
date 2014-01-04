@@ -13,8 +13,10 @@ public class Common {
 	public static final String KEY_ENABLED = "config_enabled";
 	public static final String KEY_FADE_DELAY = "config_delay";
 	public static final String KEY_FADE_SPEED = "config_speed";
+	public static final String KEY_FADE_ALPHA = "config_min_alpha";
 	
 	/* DEFAULT VALUES */
 	public static final int DEFAULT_FADE_DELAY = 2000;
 	public static final int DEFAULT_FADE_SPEED = 1000;
+	public static final float DEFAULT_FADE_ALPHA = 0f;
 }

@@ -15,6 +15,8 @@
     <string name="config_delay_summary">The time in milliseconds to wait after releasing a softkey before fading</string>
     <string name="config_speed_title">Fade Speed</string>
     <string name="config_speed_summary">The time taken in milliseconds to fade out</string>
+    <string name="config_min_alpha_title">Fade Alpha</string>
+    <string name="config_min_alpha_summary">The minimum transparency for the softkeys to fade to</string>
     
     <!-- Module -->
     <string name="module_category">Module</string>

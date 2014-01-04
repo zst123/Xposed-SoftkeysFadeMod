@@ -26,6 +26,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit {
 	
 	XSharedPreferences mPref;
+	float mMinAlpha;
 	
 	@Override
 	public void initZygote(StartupParam startupParam) throws Throwable {
@@ -41,6 +42,7 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 		hookSystemUIRestartBroadcast(classSystemUIService);
 		
 		if (isEnabled()) {
+			mMinAlpha = getMinimumAlpha();
 			final Class<?> classKeyButtonView = findClass(
 					"com.android.systemui.statusbar.policy.KeyButtonView", lpparam.classLoader);
 			hookKeyButtonView(classKeyButtonView);
@@ -82,14 +84,14 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 		XposedBridge.hookAllConstructors(classKeyButtonView, new XC_MethodHook() {
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				final ImageView thizz = (ImageView) param.thisObject;
-				final Animation fade_out = new AlphaAnimation(1, 0);
+				final Animation fade_out = new AlphaAnimation(1, mMinAlpha);
 				final Handler handler = new Handler(thizz.getContext().getMainLooper());
 				final Runnable runnable = new Runnable() {
 					@Override
 					public void run() {
 						if (thizz.getVisibility() != View.VISIBLE) {
 							// keys that are hidden should not animate
-							thizz.setAlpha(0f);
+							thizz.setAlpha(mMinAlpha);
 							// set alpha immediately
 							return;
 						}
@@ -106,7 +108,7 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 							
 							@Override
 							public void onAnimationEnd(Animation animation) {
-								thizz.setAlpha(0f);
+								thizz.setAlpha(mMinAlpha);
 							}
 						});
 						fade_out.reset();
@@ -139,6 +141,7 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				final ImageView thizz = (ImageView) param.thisObject;
 				final MotionEvent event = (MotionEvent) param.args[0];
 				switch (event.getAction()) {
+				case MotionEvent.ACTION_OUTSIDE:
 				case MotionEvent.ACTION_CANCEL:
 				case MotionEvent.ACTION_UP:
 					thizz.getContext().sendBroadcast(new Intent(Common.BROADCAST_FADE));
@@ -155,6 +158,11 @@ public class MainXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit
 	private boolean isEnabled() {
 		mPref.reload();
 		return mPref.getBoolean(Common.KEY_ENABLED, false);
+	}
+	
+	private float getMinimumAlpha() {
+		mPref.reload();
+		return mPref.getFloat(Common.KEY_FADE_ALPHA, Common.DEFAULT_FADE_ALPHA);
 	}
 	
 	private int getSpeed() {

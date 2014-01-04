@@ -24,6 +24,15 @@
             android:key="config_speed"
             android:summary="@string/config_speed_summary"
             android:title="@string/config_speed_title" />
+        
+        <com.zst.xposed.softkeysfademod.preference.WidgetFloatPercentage
+            defaultValue="0.0"
+            maximum="1.0"
+            minimum="0.0"
+            android:dependency="config_enabled"
+            android:key="config_min_alpha"
+            android:summary="@string/config_min_alpha_summary"
+            android:title="@string/config_min_alpha_title" />
     </PreferenceCategory>
     
     <PreferenceCategory android:title="@string/module_category" >
