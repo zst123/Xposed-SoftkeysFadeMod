@@ -3,6 +3,7 @@
 
     <string name="app_name">SoftkeysFadeMod</string>
     <string name="app_description">Fades the softkeys to black after not touching it for some time (zst123)</string>
+    <string name="default_value">Default</string>
     
     <!-- Configurations -->
     <string name="config_category">Settings</string>
