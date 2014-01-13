@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SoftkeysFadeMod</string>
+    <string name="app_description">Chuyển màu các phím mềm dần sang màu đen sau một khoảng thời gian không sử dụng (zst123)</string>
+    <string name="default_value">Mặc định</string>
+    
+    <!-- Configurations -->
+    <string name="config_category">Thiết lập</string>
+    <string name="config_enabled_title">Bật chuyển màu</string>
+    <string name="config_enabled_dialog_message">Bật/Tắt chuyển màu cần phải khởi động lại SystemUI.\n\nKhởi động lại SystemUI?</string>
+    <string name="config_enabled_dialog_cancel_enabled">Chuyển màu sẽ được bật sau khi SystemUI khởi động lại</string>
+    <string name="config_enabled_dialog_cancel_disabled">Chuyển màu sẽ được tắt sau khi SystemUI khởi động lại</string>
+    <string name="config_delay_title">Thời gian chờ</string>
+    <string name="config_delay_summary">Thời gian chờ, tính bằng mili-giây, trước khi bắt đầu chuyển màu kể từ khi bỏ chạm vào phím mềm</string>
+    <string name="config_speed_title">Tốc độ</string>
+    <string name="config_speed_summary">Thời gian, tính bằng mili-giây, để chuyển màu xong</string>
+    <string name="config_min_alpha_title">Độ mờ</string>
+    <string name="config_min_alpha_summary">Độ mở của phím mềm sau khi chuyển màu</string>
+    <string name="config_others_dialog_message">Cần phải khởi động lại SystemUI.\n\nKhởi động lại SystemUI?</string>
+    <string name="config_others_dialog_cancel">Có hiệu lực sau khi khởi động lại SystemUI</string>
+    
+    <!-- Module -->
+    <string name="module_category">Module</string>
+    <string name="module_about_title">Giới thiệu</string>
+    <string name="module_about_summary">• Tác giả: zst123\n• Lấy cảm hứng từ Softkeys Fade Mod trong bản ROM Cataclysm</string>
+
+</resources>
